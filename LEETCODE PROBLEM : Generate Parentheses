@@ -1,0 +1,23 @@
+class Solution {
+    static List<String> brackets;
+    public List<String> generateParenthesis(int n) {
+        brackets=new ArrayList<>();
+        helper(n,n,"");
+        return brackets;
+    }
+    
+    public static void helper(int open, int close,String asf){
+        if(open==0&&close==0){
+            brackets.add(asf);
+            return;
+        }
+        
+        if(open>0){
+            helper(open-1,close,asf+"(");
+        }
+        if(open<close&&close>0){
+            helper(open,close-1,asf+")");
+        }
+        
+    }
+}
